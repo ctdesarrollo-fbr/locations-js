@@ -12,6 +12,10 @@ How can use this lib?
 
 Upgrading JSON DB
 
+The source JSON is not tracked in this repo. Download it pinned to a specific upstream commit (to upgrade the data, replace the SHA with a newer one), then generate the fragments:
+
+    curl -fL --create-dirs -o "jsonData/countries+states+cities.json" "https://raw.githubusercontent.com/dr5hn/countries-states-cities-database/20de077b176b00ba0fc0f298a55caa1dc6337a86/json/countries%2Bstates%2Bcities.json"
+
     Rscript ./utils/fragmentFile.R "jsonData/countries+states+cities.json" "src/Infrastructure/Repositories/JsonDB/JsonData/fragments" 4
 
 

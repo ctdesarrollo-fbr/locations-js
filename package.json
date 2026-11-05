@@ -26,6 +26,7 @@
     "lodash": "^4.17.21"
   },
   "scripts": {
+    "build": "tsc -p . && mkdir -p dist/Infrastructure/Repositories/JsonDB/JsonData/fragments && cp src/Infrastructure/Repositories/JsonDB/JsonData/fragments/*.json dist/Infrastructure/Repositories/JsonDB/JsonData/fragments/",
     "test": "jest",
     "clear-cache": "jest --clearCache"
   }

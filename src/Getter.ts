@@ -20,8 +20,8 @@ export const findStatesByIsoTwoCode = (iso2: string) => {
     return JsonDBLocationRepository.getInstance().findStatesByCountryIsoTwoCode(iso2);
 
 }
-export const findCitiesByIsoTwoCodeAndStatecode = (iso2: string, stateCode: string) => {
+export const findCitiesByIsoTwoCodeAndStatecode = (iso2: string, stateIso2: string) => {
 
-    return JsonDBLocationRepository.getInstance().findCitiesByCountryIsoTwoCodeAndStateCode(iso2, stateCode);
+    return JsonDBLocationRepository.getInstance().findCitiesByCountryIsoTwoCodeAndStateCode(iso2, stateIso2);
 
 }

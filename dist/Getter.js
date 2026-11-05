@@ -21,7 +21,7 @@ const findStatesByIsoTwoCode = (iso2) => {
     return JsonDBLocationRepository_1.default.getInstance().findStatesByCountryIsoTwoCode(iso2);
 };
 exports.findStatesByIsoTwoCode = findStatesByIsoTwoCode;
-const findCitiesByIsoTwoCodeAndStatecode = (iso2, stateCode) => {
-    return JsonDBLocationRepository_1.default.getInstance().findCitiesByCountryIsoTwoCodeAndStateCode(iso2, stateCode);
+const findCitiesByIsoTwoCodeAndStatecode = (iso2, stateIso2) => {
+    return JsonDBLocationRepository_1.default.getInstance().findCitiesByCountryIsoTwoCodeAndStateCode(iso2, stateIso2);
 };
 exports.findCitiesByIsoTwoCodeAndStatecode = findCitiesByIsoTwoCodeAndStatecode;

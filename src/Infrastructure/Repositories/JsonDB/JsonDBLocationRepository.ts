@@ -89,12 +89,12 @@ export default class JsonDBLocationRepository implements LocationRepositoryContr
         return countries.States
     }
 
-    findCitiesByCountryIsoTwoCodeAndStateCode(iso2: string, stateCode: string): City[] {
+    findCitiesByCountryIsoTwoCodeAndStateCode(iso2: string, stateIso2: string): City[] {
 
-        let State: State =  this.findStatesByCountryIsoTwoCode(iso2, true).filter((state :State) => state.stateCode == stateCode)[0]
+        let State: State =  this.findStatesByCountryIsoTwoCode(iso2, true).filter((state :State) => state.iso2 == stateIso2)[0]
 
         if(!State){
-            throw new ExceptionsDomain.StateNotFound("The State " + stateCode + " not found")
+            throw new ExceptionsDomain.StateNotFound("The State " + stateIso2 + " not found")
         }
 
         return State.Cities
@@ -141,7 +141,7 @@ export default class JsonDBLocationRepository implements LocationRepositoryContr
             country.iso2, 
             country.iso3, 
             country.translations,
-            country.phone_code,
+            country.phonecode,
             country.emoji,
             country.emojiU,
         )
@@ -158,7 +158,7 @@ export default class JsonDBLocationRepository implements LocationRepositoryContr
     private mapState(state :StateLibObject, withCities: boolean = false) :State
     {
         let StateObject = new State(
-            state.id, state.name, state.state_code
+            state.id, state.name, state.iso2, state.iso3166_2
         )
 
         if(withCities) {

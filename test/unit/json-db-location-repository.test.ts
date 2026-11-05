@@ -154,9 +154,39 @@ describe('Json DB repository test', () => {
     it('get_cities_by_iso_code_2_and_state_code_when_state_dont_have_cities', () => {
 
         //with one country
-        let Cities = _JsonDbRepository.findCitiesByCountryIsoTwoCodeAndStateCode('AL','01')
+        let Cities = _JsonDbRepository.findCitiesByCountryIsoTwoCodeAndStateCode('BB','03')
 
         expect(Cities).toHaveLength(0);
+
+    });
+
+    /**
+     * scenarios source schema mapping
+     */
+
+    it('should_map_state_iso2_and_iso3166_2', () => {
+
+        let State = _JsonDbRepository.findStatesByCountryIsoTwoCode('VE').filter((state) => state.iso2 == 'A')[0]
+
+        expect(State.name).toBe('Distrito Capital');
+        expect(State.iso3166_2).toBe('VE-A');
+
+    });
+
+    it('should_map_state_iso3166_2_as_null_when_source_does_not_have_it', () => {
+
+        let State = _JsonDbRepository.findStatesByCountryIsoTwoCode('ET').filter((state) => state.iso2 == '55')[0]
+
+        expect(State.name).toBe('Central Ethiopia');
+        expect(State.iso3166_2).toBeNull();
+
+    });
+
+    it('should_map_country_phone_code', () => {
+
+        const country = _JsonDbRepository.findCountryByIsoTwoCodeOrFail('EC');
+
+        expect(country.phoneCode).toBe('593');
 
     });
 

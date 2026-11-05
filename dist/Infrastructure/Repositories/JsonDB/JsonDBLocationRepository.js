@@ -49,10 +49,10 @@ class JsonDBLocationRepository {
         let countries = this.findCountryByIsoTwoCodeOrFail(iso2Country, true, withCities);
         return countries.States;
     }
-    findCitiesByCountryIsoTwoCodeAndStateCode(iso2, stateCode) {
-        let State = this.findStatesByCountryIsoTwoCode(iso2, true).filter((state) => state.stateCode == stateCode)[0];
+    findCitiesByCountryIsoTwoCodeAndStateCode(iso2, stateIso2) {
+        let State = this.findStatesByCountryIsoTwoCode(iso2, true).filter((state) => state.iso2 == stateIso2)[0];
         if (!State) {
-            throw new Domain_1.ExceptionsDomain.StateNotFound("The State " + stateCode + " not found");
+            throw new Domain_1.ExceptionsDomain.StateNotFound("The State " + stateIso2 + " not found");
         }
         return State.Cities;
     }
@@ -79,14 +79,14 @@ class JsonDBLocationRepository {
         { }
     }
     mapCountry(country, withState = false, withCities = false) {
-        let CountryObject = new Domain_1.Country(country.id, country.name, country.iso2, country.iso3, country.translations, country.phone_code, country.emoji, country.emojiU);
+        let CountryObject = new Domain_1.Country(country.id, country.name, country.iso2, country.iso3, country.translations, country.phonecode, country.emoji, country.emojiU);
         if (withState) {
             CountryObject.States = country.states.map((state) => this.mapState(state, withCities));
         }
         return CountryObject;
     }
     mapState(state, withCities = false) {
-        let StateObject = new Domain_1.State(state.id, state.name, state.state_code);
+        let StateObject = new Domain_1.State(state.id, state.name, state.iso2, state.iso3166_2);
         if (withCities) {
             StateObject.Cities = state.cities.map((city) => this.mapCity(city));
         }

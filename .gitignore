@@ -53,3 +53,6 @@ nbproject/private/
 Thumbs.db
 
 **/src/Infrastructure/Repositories/JsonDB/JsonData/fragments/**json
+
+# Source JSON DB, download it following the README
+jsonData/

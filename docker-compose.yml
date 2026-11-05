@@ -1,4 +1,3 @@
-version: '3.5'
 services:
   app:
     build:
@@ -15,6 +14,7 @@ services:
     build:
       context: .
       dockerfile: DockerfileForR
+    profiles: [data-chunk]
     working_dir: /usr/local/src/myscripts
     container_name: r-base-locations-js
     volumes:

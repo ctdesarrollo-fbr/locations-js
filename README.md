@@ -10,6 +10,10 @@ How can use this lib?
 
 ![example_can_use_lib](./docs/examples/example_use_code.png)
 
+Upgrading JSON DB
+
+    Rscript ./utils/fragmentFile.R "jsonData/countries+states+cities.json" "src/Infrastructure/Repositories/JsonDB/JsonData/fragments" 4
+
 
 ## Methods
 
